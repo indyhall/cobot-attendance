@@ -1,0 +1,18 @@
+@import "cobot_assets/font_awesome_imports";
+@import "cobot_assets/imports";
+
+body {
+  background: transparent;
+}
+
+.table--checkins {
+  width: 100%;
+}
+.table--checkins thead th {
+  border-bottom: 1px solid #e5e8f4;
+  padding: 1.25rem .25rem 1.25rem;
+}
+.table--checkins tr td {
+  border-bottom: 1px solid #e5e8f4;
+  padding: 1.25rem .25rem 1.25rem;
+}

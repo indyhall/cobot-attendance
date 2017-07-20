@@ -1,0 +1,1 @@
+required scopes: read_memberships checkin checkin_tokens navigation read_check_ins read_time_passes read_user write write_time_passes

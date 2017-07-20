@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Custom Attendance</title>
+    <meta name="application-name" content="Custom Attendance"/>
+    <meta name="description" content="">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
+  </head>
+  <body>
+    <script type="text/x-handlebars" id="loading">
+      <p class="alert">Loading...</p>
+    </script>
+    <script type="text/x-handlebars" id="index">
+      <table class='table--checkins'>
+        <thead>
+          <th width="150" align="center">Member</th>
+          <th width=""></th>
+          <th width="200" align="center">Check in today</th>
+        </thead>
+        <tbody>
+          {{#each activeMemberships as |membership|}}
+            <tr>
+              <td align="left">
+                <div class="img--avatar img--avatar-center">
+                  <img src="https://{{subdomain}}.cobot.me/api/memberships/{{membership.id}}/picture?picture_size=small" width="75" height="75">
+                </div>
+              </td>
+              <td>
+                {{membership.name}}
+              </td>
+              <td align="center">
+                {{#if membership.isCheckedIn}}
+                  <button {{action 'checkOut' membership}} class="btn btn_check btn--mint">Undo</button>
+                {{else}}
+                  <button {{action 'checkIn' membership}} class="btn btn--primary btn_add">Check-in</button>
+                {{/if}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://bots.apps.cobot.me/javascripts/cobot_api.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.13.7/ember.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.13.7/ember-template-compiler.js"></script>
+  </body>
+</html>
